@@ -9,6 +9,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+client/package-lock.json
 ndist
 ndist-ssr
 *.local

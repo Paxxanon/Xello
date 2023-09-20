@@ -1,36 +1,36 @@
-import { useState } from 'react';
-import './App.css';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Front from './pages/FrontPage/Front.tsx';
+import Login from './pages/LoginPage/Login.tsx';
+import Signup from './pages/SignupPage/Signup.tsx';
+import Home from './pages/HomePage/Home.tsx';
+import Workspace from './pages/WorkspacePage/Workspace.tsx';
+import Boards from './pages/BoardsPage/Boards.tsx';
+import InternalBoard from './pages/InternalBoardPage/InternalBoard.tsx';
+import Account from './pages/AccountPage/Account.tsx';
+import Profile from './pages/ProfilePage/Profile.tsx';
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="bruh">
-          vitejs.dev
-        </a>
-        <a href="https://react.dev" target="bruh">
-          react.dev
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button type="button" onClick={() => setCount((countJsx) => countJsx + 1)}>
-          count is
-          {' '}
-          {count}
-        </button>
-        <p>
-          Edit
-          {' '}
-          <code>src/App.tsx</code>
-          {' '}
-          and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' Component={Front} />
+        <Route path='/login' Component={Login} />
+        <Route path='/signup' Component={Signup} />
+        <Route path='/u/home' Component={Home} />
+        <Route path='/u/profile' Component={Profile} />
+        <Route path='/u/account' Component={Account} />
+        {/* TODO: below routes should depend on user specific stuff, to be implemented later
+        <Route path='/u/username/boards' Component={Boards} />
+        <Route path='/w/workspaceName' Component={Workspace} />
+        <Route path='/b/boardIdString/boardName' Component={InternalBoard} />
+        
+        */}
+        <Route path='/u/boards' Component={Boards} />
+        <Route path='/u/workspace' Component={Workspace} />
+        <Route path='/u/board' Component={InternalBoard} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

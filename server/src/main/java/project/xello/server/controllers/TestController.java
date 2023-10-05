@@ -1,35 +1,21 @@
 package project.xello.server.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.web.bind.annotation.RestController;
 import project.xello.server.entities.User;
-import project.xello.server.repositories.UserRepository;
+import project.xello.server.services.UserService;
 
-@Controller
-@RequestMapping(path="/demo")
+@RequiredArgsConstructor
+@RestController
 public class TestController {
 
-  @Autowired
-  private UserRepository userRepository;
+  private final UserService userService;
 
-  @PostMapping(path="/add")
-  public @ResponseBody String addNewUser (@RequestParam String name, @RequestParam String email) {
-    User n = new User();
-    n.setUsername("testingName");
-    n.setEmail("testingEmail@gmail.com");
-    userRepository.save(n);
-    return "Saved";
-  }
-
-  @GetMapping(path="/all")
+  //@PostMapping(path = "/register")
+  @GetMapping(path = "/users")
   public @ResponseBody Iterable<User> getAllUsers() {
-    return userRepository.findAll();
+    return userService.getUsers();
   }
-
 }

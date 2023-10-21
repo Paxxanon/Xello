@@ -13,10 +13,16 @@ import lombok.NoArgsConstructor;
 public class SignUpDto {
 
   @NotEmpty
+  private String email;
+
+  @NotEmpty
+  private String username;
+
+/*   @NotEmpty
   private String firstName;
 
   @NotEmpty
-  private String lastName;
+  private String lastName; */
 
   @NotEmpty
   private String login;

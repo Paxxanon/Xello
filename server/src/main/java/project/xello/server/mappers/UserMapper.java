@@ -6,7 +6,7 @@ import project.xello.server.dtos.SignUpDto;
 import project.xello.server.dtos.UserDto;
 import project.xello.server.entities.User;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface UserMapper {
   UserDto toUserDto(User user);
 

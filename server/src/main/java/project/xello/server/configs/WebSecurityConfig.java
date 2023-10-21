@@ -23,6 +23,7 @@ public class WebSecurityConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http)
     throws Exception {
+    http.csrf(csrf -> csrf.disable()); // TODO: add CSRF token 
     http.authorizeHttpRequests(authorize ->
       authorize
         .requestMatchers(HttpMethod.POST, "/register")
